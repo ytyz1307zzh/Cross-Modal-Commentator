@@ -1,5 +1,6 @@
 # CMAC
 Code for paper *Cross-Modal Commentator: Automatic Machine Commenting Based on Cross-Modal Information* （ACL 2019 Oral Paper)
+
 This repository is under development. Data and pre-processing codes are not complete.
 
 modules.py: neural network modules for the proposed model.
