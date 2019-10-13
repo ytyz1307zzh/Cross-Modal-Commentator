@@ -59,7 +59,7 @@ class Model(nn.Module):
         self.vocab_size = vocab_size
         self.dropout = dropout
         self.embedding = nn.Sequential(Embeddings(n_hidden, vocab_size), PositionalEncoding(n_hidden, dropout))
-        self.video_encoder = VideoEncoder(n_hidden, d_ff, n_head, dropout, n_block)
+        self.video_encoder = ImageEncoder(n_hidden, d_ff, n_head, dropout, n_block)
         self.text_encoder = TextEncoder(n_hidden, d_ff, n_head, dropout, n_block)
         self.comment_decoder = CommentDecoder(n_hidden, d_ff, n_head, dropout, n_block)
         self.output_layer = nn.Linear(self.n_hidden, self.vocab_size)

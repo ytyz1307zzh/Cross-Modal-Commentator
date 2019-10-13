@@ -8,43 +8,12 @@ from torch.autograd import Variable
 
 BOS = 1
 
-class luong_attention(nn.Module):
 
-    def __init__(self, hidden_size):
-        super(luong_attention, self).__init__()
-        self.hidden_size = hidden_size
-        self.linear_in = nn.Linear(hidden_size, hidden_size)
-        self.linear_out = nn.Sequential(nn.Linear(2*hidden_size, hidden_size), nn.Tanh())
-        self.softmax = nn.Softmax(dim=-1)
-
-    def init_context(self, context):
-        self.context = context  # batch * seq1 * size
-
-    def forward(self, h): # batch * seq2 * size
-        gamma_h = self.linear_in(h)   #    batch * seq2 * size
-        weights = torch.bmm(gamma_h, self.context.transpose(1,2))   #  batch * seq2 * seq1
-        weights = self.softmax(weights)   #   batch * seq2 * seq1
-        c_t = torch.bmm(weights, self.context) # batch * seq2 * size
-        output = self.linear_out(torch.cat([c_t, h], -1)) # batch * seq2 * size
-
-        return output
-
-
-class Generator(nn.Module):
-    "Define standard linear + softmax generation step."
-    def __init__(self, d_model, vocab):
-        super(Generator, self).__init__()
-        self.proj = nn.Linear(d_model, vocab)
-
-    def forward(self, x):
-        return self.proj(x)
-
-
-class VideoEncoder(nn.Module):
+class ImageEncoder(nn.Module):
 
     def __init__(self, d_model, d_ff, n_head, dropout, n_block):
-        super(VideoEncoder, self).__init__()
-        self.layers = nn.ModuleList([VideoBlock(d_model, d_ff, n_head, dropout) for _ in range(n_block)])
+        super(ImageEncoder, self).__init__()
+        self.layers = nn.ModuleList([ImageBlock(d_model, d_ff, n_head, dropout) for _ in range(n_block)])
         self.norm = LayerNorm(d_model)
 
     def forward(self, x):
@@ -79,10 +48,10 @@ class CommentDecoder(nn.Module):
         return self.norm(x)
 
 
-class VideoBlock(nn.Module):
+class ImageBlock(nn.Module):
 
     def __init__(self, d_model, d_ff, n_head, dropout):
-        super(VideoBlock, self).__init__()
+        super(ImageBlock, self).__init__()
         self.self_attn = MultiHeadedAttention(n_head, d_model)
         self.feed_forward = PositionwiseFeedForward(d_model, d_ff, dropout)
         self.sublayer = nn.ModuleList([SublayerConnection(d_model, dropout) for _ in range(2)])
