@@ -16,7 +16,7 @@ numpy>=1.16
 
 ## Dataset
 
-This repository is under development. Data and pre-processing codes are not complete.
+The processed dataset can be found in [Google Drive](https://drive.google.com/drive/folders/1MmjiO5S8-nTU-vC-yxFEX01oTh4aaqVn?usp=sharing). ``dict_50000.json`` is the dictionary file collected from the training set. ``*.img`` files are processed images by pretrained ResNet. ``*.json`` files are the corresponding texts.
 
 ## Files
 
