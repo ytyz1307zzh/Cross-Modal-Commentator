@@ -22,7 +22,7 @@ I am really sorry that I don't have enough resources to open the raw images sinc
 
 ## Files
 
-modules.py: neural network modules for the proposed model.
+modules.py: neural network modules for the proposed model.<br>
 transformer.py: model definition, training and testing codes for the proposed model (Transformer version).
 
 ## Training & Testing
