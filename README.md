@@ -18,7 +18,7 @@ numpy>=1.16
 
 The processed dataset can be found in [Google Drive](https://drive.google.com/drive/folders/1MmjiO5S8-nTU-vC-yxFEX01oTh4aaqVn?usp=sharing). ``dict_50000.json`` is the dictionary file collected from the training set. ``*.img`` files are processed images by pretrained ResNet. ``*.json`` files are the corresponding texts.
 
-I am really sorry that I don't have enough resources to open the raw images since they are too large. However, for those who really want to access the raw images, you can find a raw dataset [here](https://drive.google.com/open?id=1npF-CNpU5AZPnPu6GTE7vvn-SrnBfDRV). The raw dataset is not split into train/dev/test sets and the images are shown as urls. And you can find the scripts I used to collect those images from the Internet in ``data/*_image.py``. The ResNet script used to process raw images is ``data/preprocess_image.py``.
+I am really sorry that I don't have enough resources to open the raw images since they are too large. However, for those who really want to access the raw images, you can find a raw dataset [here](https://drive.google.com/open?id=1npF-CNpU5AZPnPu6GTE7vvn-SrnBfDRV). The raw dataset is not split into train/dev/test sets and the images are shown as urls. And you can find the scripts I used to collect those images from the Internet in ``data/*_image.py``. The ResNet script used to process raw images is ``data/preprocess_image.py``. Dataset split is done in ``data/data_process.py``.
 
 ## Files
 
